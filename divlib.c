@@ -5,27 +5,27 @@ struct digit {
     int num;
     struct digit *next;
 };
-struct digit *createDigit(int dig);
+struct digit *create_digit(int dig);
 struct digit * append(struct digit * end, struct digit * newDigptr);
-void printNumber(struct digit *start);
-void freeNumber(struct digit *start);
-struct digit *readNumber(void);
-int divisibleByThree(struct digit *start);
+void print_num(struct digit *start);
+void free_num(struct digit *start);
+struct digit *read_num(void);
+int div_by_3(struct digit *start);
 
 int main(void) {
     struct digit *start;
-    start = readNumber();
+    start = read_num();
     printf("The number ");
-    printNumber(start);
-    if (divisibleByThree(start))
+    print_num(start);
+    if (div_by_3(start))
         printf("is divisible by 3.\n");
     else
         printf("is not divisible by 3.\n");
-    freeNumber(start);
+    free_num(start);
     return 0;
 }
 
-struct digit *createDigit(int dig) {
+struct digit *create_digit(int dig) {
     struct digit *ptr;
     ptr = (struct digit *) malloc(sizeof(struct digit));
     ptr->num = dig;
@@ -38,7 +38,7 @@ struct digit * append(struct digit * end, struct digit * newDigptr) {
     return(end->next);
 }
 
-void printNumber(struct digit *start) {
+void print_num(struct digit *start) {
     struct digit * ptr = start;
     while (ptr!=NULL) {
         printf("%d", ptr->num);
@@ -47,7 +47,7 @@ void printNumber(struct digit *start) {
     printf("\n");
 }
 
-void freeNumber(struct digit *start) {
+void free_num(struct digit *start) {
     struct digit * ptr = start;
     struct digit * tmp;
     while (ptr!=NULL) {
@@ -57,15 +57,15 @@ void freeNumber(struct digit *start) {
     }
 }
 
-struct digit *readNumber(void) {
+struct digit *read_num(void) {
     char c;
     int d;
     struct digit *start, *end, *newptr;
     start = NULL;
     scanf("%c", &c);
     while (c != '\n') {
-        d = c-48;
-        newptr = createDigit(d);
+        d = c-'0';
+        newptr = create_digit(d);
         if (start == NULL) {
             start = newptr;
             end = start;
@@ -77,8 +77,7 @@ struct digit *readNumber(void) {
     return(start);
 }
 
-/* need to update with 'collapse' */
-int divisibleByThree(struct digit *start){
+int div_by_3(struct digit *start){
     int sum = 0;
     while(start != NULL){
         sum += start->num;
