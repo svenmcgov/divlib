@@ -5,11 +5,15 @@ struct digit {
     int num;
     struct digit *next;
 };
-struct digit *create_digit(int dig);
-struct digit * append(struct digit * end, struct digit * newDigptr);
-void print_num(struct digit *start);
-void free_num(struct digit *start);
+
+struct digit *create_digit(int);
+struct digit * append(struct digit *, struct digit *);
+void print_num(struct digit *);
+void free_num(struct digit *);
 struct digit *read_num(void);
+
+/* div checks -- return 1 if true, 0 if false */
+int is_even(struct digit *start);
 int div_by_3(struct digit *start);
 
 int main(void) {
@@ -17,10 +21,10 @@ int main(void) {
     start = read_num();
     printf("The number ");
     print_num(start);
-    if (div_by_3(start))
-        printf("is divisible by 3.\n");
+    if (is_even(start))
+        printf("is divisible by 2.\n");
     else
-        printf("is not divisible by 3.\n");
+        printf("is not divisible by 2.\n");
     free_num(start);
     return 0;
 }
@@ -75,6 +79,18 @@ struct digit *read_num(void) {
         scanf("%c", &c);
     }
     return(start);
+}
+
+int is_even(struct digit *start){
+  while(start->next != NULL){
+    start = start->next;
+  }
+  printf("%d\n", start->num);
+  if(start->num == 0 || start->num == 2 || start->num == 4 ||
+     start->num == 6 || start->num == 8){
+       return 1;
+  }
+  return 0;
 }
 
 int div_by_3(struct digit *start){
