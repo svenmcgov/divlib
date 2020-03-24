@@ -15,6 +15,7 @@ struct digit *read_num(void);
 /* div checks -- return 1 if true, 0 if false */
 int is_even(struct digit *start);
 int div_by_3(struct digit *start);
+int div_by_4(struct digit *start);
 
 int main(void) {
     struct digit *start;
@@ -78,14 +79,14 @@ struct digit *read_num(void) {
         }
         scanf("%c", &c);
     }
-    return(start);
+    return start;
 }
 
 int is_even(struct digit *start){
   while(start->next != NULL){
     start = start->next;
   }
-  printf("%d\n", start->num);
+  // printf("%d\n", start->num);
   if(start->num == 0 || start->num == 2 || start->num == 4 ||
      start->num == 6 || start->num == 8){
        return 1;
@@ -103,4 +104,8 @@ int div_by_3(struct digit *start){
         return 1;
     }
     return 0;
+}
+
+int div_by_4(struct digit *start){
+  return 0;
 }
