@@ -18,6 +18,7 @@ int div_by_3(struct digit *start);
 int div_by_4(struct digit *start);
 int div_by_5(struct digit *start);
 int div_by_6(struct digit *start);
+int div_by_7(struct digit *start);
 
 int main(void) {
     struct digit *start;
@@ -134,5 +135,9 @@ int div_by_5(struct digit *start){
 int div_by_6(struct digit *start){
   if(is_even(start) && div_by_3(start))
     return 1;
+  return 0;
+}
+
+int div_by_7(struct digit *start){
   return 0;
 }
