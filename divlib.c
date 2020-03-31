@@ -17,16 +17,17 @@ int is_even(struct digit *start);
 int div_by_3(struct digit *start);
 int div_by_4(struct digit *start);
 int div_by_5(struct digit *start);
+int div_by_6(struct digit *start);
 
 int main(void) {
     struct digit *start;
     start = read_num();
     printf("The number ");
     print_num(start);
-    if (div_by_5(start))
-        printf("is divisible by 5.\n");
+    if (div_by_6(start))
+        printf("is divisible by 6.\n");
     else
-        printf("is not divisible by 5.\n");
+        printf("is not divisible by 6.\n");
     free_num(start);
     return 0;
 }
@@ -127,5 +128,11 @@ int div_by_5(struct digit *start){
   if(start->num == 5 || start->num == 0)
     return 1;
 
+  return 0;
+}
+
+int div_by_6(struct digit *start){
+  if(is_even(start) && div_by_3(start))
+    return 1;
   return 0;
 }
