@@ -12,6 +12,8 @@ void print_num(struct digit *);
 void free_num(struct digit *);
 struct digit *read_num(void);
 
+int last_digit(struct digit *start);
+
 /* div checks -- return 1 if true, 0 if false */
 int is_even(struct digit *start);
 int div_by_3(struct digit *start);
@@ -30,6 +32,13 @@ int main(void) {
     else
         printf("is not divisible by 6.\n");
     free_num(start);
+
+    int i = 0;
+    for(i = 0; i < 10; i++){
+      start = read_num();
+      printf("Last digit: %d\n", last_digit(start));
+    }
+
     return 0;
 }
 
@@ -83,6 +92,13 @@ struct digit *read_num(void) {
         scanf("%c", &c);
     }
     return start;
+}
+
+int last_digit(struct digit *start){
+  while(start->next != NULL){
+    start = start->next;
+  }
+  return start->num;
 }
 
 int is_even(struct digit *start){
