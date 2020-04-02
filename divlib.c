@@ -21,6 +21,7 @@ int div_by_4(struct digit *start);
 int div_by_5(struct digit *start);
 int div_by_6(struct digit *start);
 int div_by_7(struct digit *start);
+int div_by_8(struct digit *start);
 
 int main(void) {
     struct digit *start;
@@ -155,5 +156,6 @@ int div_by_6(struct digit *start){
 }
 
 int div_by_7(struct digit *start){
+
   return 0;
 }
