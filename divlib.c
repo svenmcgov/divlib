@@ -38,7 +38,11 @@ int main(void) {
     int i = 0;
     for(i = 0; i < 5; i++){
       start = read_num();
-      printf("Last digit: %d\n", last_digit(start));
+      printf("Your number is: ");
+      print_num(start);
+      printf("Trimming last digit: %d\n", pop(start));
+      printf("Your new number is: ");
+      print_num(start);
     }
 
     return 0;
