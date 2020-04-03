@@ -7,7 +7,8 @@ struct digit {
 };
 
 struct digit *create_digit(int);
-struct digit * append(struct digit *, struct digit *);
+struct digit *append(struct digit *, struct digit *);
+int pop(struct digit *);
 void print_num(struct digit *);
 void free_num(struct digit *);
 struct digit *read_num(void);
@@ -35,7 +36,7 @@ int main(void) {
     free_num(start);
 
     int i = 0;
-    for(i = 0; i < 10; i++){
+    for(i = 0; i < 5; i++){
       start = read_num();
       printf("Last digit: %d\n", last_digit(start));
     }
@@ -100,6 +101,16 @@ int last_digit(struct digit *start){
     start = start->next;
   }
   return start->num;
+}
+
+int pop(struct digit *start){
+  while(start->next->next != NULL){
+    start = start->next;
+  }
+  int last = start->next->num;
+  free(start->next);
+  start->next = NULL;
+  return last;
 }
 
 int is_even(struct digit *start){
