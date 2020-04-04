@@ -108,6 +108,16 @@ int last_digit(struct digit *start){
 }
 
 int pop(struct digit *start){
+  if(start == NULL){
+    return -1;
+  }
+
+  if(start->next == NULL){
+    int last = start->num;
+    free(start);
+    return last;
+  }
+
   while(start->next->next != NULL){
     start = start->next;
   }
