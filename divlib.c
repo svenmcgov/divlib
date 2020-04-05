@@ -23,6 +23,8 @@ int div_by_5(struct digit *start);
 int div_by_6(struct digit *start);
 int div_by_7(struct digit *start);
 int div_by_8(struct digit *start);
+int div_by_9(struct digit *start);
+iny div_by_9(struct digit *start);
 
 int main(void) {
     struct digit *start;
