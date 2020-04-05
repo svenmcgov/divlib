@@ -16,15 +16,15 @@ struct digit *read_num(void);
 int last_digit(struct digit *start);
 
 /* div checks -- return 1 if true, 0 if false */
-int is_even(struct digit *start);
-int div_by_3(struct digit *start);
-int div_by_4(struct digit *start);
-int div_by_5(struct digit *start);
-int div_by_6(struct digit *start);
-int div_by_7(struct digit *start);
-int div_by_8(struct digit *start);
-int div_by_9(struct digit *start);
-iny div_by_9(struct digit *start);
+int is_even(struct digit *);
+int div_by_3(struct digit *);
+int div_by_4(struct digit *);
+int div_by_5(struct digit *);
+int div_by_6(struct digit *);
+int div_by_7(struct digit *);
+int div_by_8(struct digit *);
+int div_by_9(struct digit *);
+iny div_by_10(struct digit *);
 
 int main(void) {
     struct digit *start;
