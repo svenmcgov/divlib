@@ -12,7 +12,7 @@ int pop(struct digit *);
 void print_num(struct digit *);
 void free_num(struct digit *);
 struct digit *read_num(void);
-
+struct digit *copy(struct digit *);
 int last_digit(struct digit *start);
 
 /* div checks -- return 1 if true, 0 if false */
@@ -24,10 +24,10 @@ int div_by_6(struct digit *);
 int div_by_7(struct digit *);
 int div_by_8(struct digit *);
 int div_by_9(struct digit *);
-iny div_by_10(struct digit *);
+int div_by_10(struct digit *);
 
 int main(void) {
-    struct digit *start;
+    struct digit *start, *copy;
     start = read_num();
     printf("The number ");
     print_num(start);
@@ -42,8 +42,7 @@ int main(void) {
       start = read_num();
       printf("Your number is: ");
       print_num(start);
-      printf("Trimming last digit: %d\n", pop(start));
-      printf("Your new number is: ");
+
       print_num(start);
     }
 
@@ -100,6 +99,30 @@ struct digit *read_num(void) {
         scanf("%c", &c);
     }
     return start;
+}
+
+struct digit *copy(struct digit *start){
+  struct digit *copy_start = NULL;
+  struct digit *copy_end = NULL;
+  struct digit *new_digit = NULL;
+
+  if(start != NULL){
+    copy_start = create_digit(start->num);
+    start = start->next;
+  }else{
+    return NULL;
+  }
+
+  new_digit = copy_start;
+  copy_end = copy_start;
+
+  while(start != NULL){
+    new_digit = create_digit(start->num);
+    copy_end = append(copy_end, new_digit);
+    start = start->next;
+  }
+
+  return copy_start;
 }
 
 int last_digit(struct digit *start){
@@ -183,6 +206,7 @@ int div_by_6(struct digit *start){
 }
 
 int div_by_7(struct digit *start){
+  int last = pop(start);
 
   return 0;
 }
