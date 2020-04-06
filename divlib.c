@@ -27,7 +27,7 @@ int div_by_9(struct digit *);
 int div_by_10(struct digit *);
 
 int main(void) {
-    struct digit *start, *copy;
+    struct digit *start, *copynum;
     start = read_num();
     printf("The number ");
     print_num(start);
@@ -42,7 +42,8 @@ int main(void) {
       start = read_num();
       printf("Your number is: ");
       print_num(start);
-
+      copynum = copy(start);
+      printf("The copy test result is: ");
       print_num(start);
     }
 
